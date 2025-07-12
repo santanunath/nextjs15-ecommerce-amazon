@@ -27,7 +27,7 @@ https://next-mongo-ecommerce-final.vercel.app/
 - quick view products in modals using nextjs parallel routes with intercepting routes
 - create database models by Mongoose and MongoDB database
 - handling form inputs by react-hook-forms and zod data validator
-- updating data by server actions without using any api
+- updating data by 'server actions' without using any api
 - managing shopping cart using http cookies on server side
 - handling authentication and authorization by next-auth
 - creating customer dashboard to update profile and track orders
