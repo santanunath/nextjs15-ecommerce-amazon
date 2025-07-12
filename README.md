@@ -31,7 +31,7 @@ https://next-mongo-ecommerce-final.vercel.app/
 - handling form inputs by 'react-hook-forms' and 'zod' data validator
 - updating data by 'server actions' without using any API
 - managing shopping cart using 'http cookies' on server side
-- handling authentication and authorization by 'next-auth'
+- handling 'authentication and authorization' by 'next-auth'
 - creating 'customer-dashboard' to update profile and track orders
 - creating 'admin-dashboard' with beautiful charts and handling products, orders and users
 
