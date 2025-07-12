@@ -25,13 +25,13 @@ https://next-mongo-ecommerce-final.vercel.app/
 - creating e-commerce website pages by next.js server components
 - designing header, footer, sidebar, menu and search box by shadcn and tailwind
 - quick view products in modals using nextjs parallel routes with intercepting routes
-- create database models by Mongoose and MongoDB database
-- handling form inputs by react-hook-forms and zod data validator
-- updating data by 'server actions' without using any api
-- managing shopping cart using http cookies on server side
-- handling authentication and authorization by next-auth
-- creating customer dashboard to update profile and track orders
-- and implement a fully-functional admin dashboard with beautiful charts and handling products, orders and users
+- create database schema 'models' by 'Mongoose' and MongoDB database
+- handling form inputs by 'react-hook-forms' and 'zod' data validator
+- updating data by 'server actions' without using any API
+- managing shopping cart using 'http cookies' on server side
+- handling authentication and authorization by 'next-auth'
+- creating 'customer-dashboard' to update profile and track orders
+- creating 'admin-dashboard' with beautiful charts and handling products, orders and users
 
 ## Run Locally
 
