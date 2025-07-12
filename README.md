@@ -50,7 +50,7 @@ https://next-mongo-ecommerce-final.vercel.app/
 
    - Cloud MongoDB
      - Create database at https://mongodb.com/
-     - In .env.local file update MONGODB_URI to db url
+     - In .env file update MONGODB_URI to db url
    - OR Local MongoDB
      - Install it from https://www.MongoDB.org/download
      - In .env.local file update MONGODB_URI to db url
