@@ -15,6 +15,8 @@ import User from '../db/models/user.model'
 import mongoose from 'mongoose'
 import { getSetting } from './setting.actions'
 
+
+
 // CREATE
 export const createOrder = async (clientSideCart: Cart) => {
   try {
@@ -35,6 +37,9 @@ export const createOrder = async (clientSideCart: Cart) => {
     return { success: false, message: formatError(error) }
   }
 }
+
+
+
 export const createOrderFromCart = async (
   clientSideCart: Cart,
   userId: string
@@ -61,6 +66,9 @@ export const createOrderFromCart = async (
   })
   return await Order.create(order)
 }
+
+
+
 
 export async function updateOrderToPaid(orderId: string) {
   try {
@@ -116,6 +124,10 @@ const updateProductStock = async (orderId: string) => {
     throw error
   }
 }
+
+
+
+
 export async function deliverOrder(orderId: string) {
   try {
     await connectToDatabase()
@@ -135,24 +147,37 @@ export async function deliverOrder(orderId: string) {
   }
 }
 
+
+
 // DELETE
-export async function deleteOrder(id: string) {
-  try {
+// ------
+export async function deleteOrder(id: string) 
+{
+  try 
+  {
     await connectToDatabase()
+    
     const res = await Order.findByIdAndDelete(id)
+    
     if (!res) throw new Error('Order not found')
     revalidatePath('/admin/orders')
+    
     return {
       success: true,
       message: 'Order deleted successfully',
     }
-  } catch (error) {
+  } 
+  catch (error) 
+  {
     return { success: false, message: formatError(error) }
   }
-}
+  
+} //deleteOrder()
+
+
 
 // GET ALL ORDERS
-
+/ ----------------
 export async function getAllOrders({
   limit,
   page,
@@ -187,12 +212,17 @@ export async function getMyOrders({
   const {
     common: { pageSize },
   } = await getSetting()
+  
   limit = limit || pageSize
+  
   await connectToDatabase()
+  
   const session = await auth()
-  if (!session) {
+  if (!session) 
+  {
     throw new Error('User is not authenticated')
   }
+  
   const skipAmount = (Number(page) - 1) * limit
   const orders = await Order.find({
     user: session?.user?.id,
@@ -206,14 +236,24 @@ export async function getMyOrders({
     data: JSON.parse(JSON.stringify(orders)),
     totalPages: Math.ceil(ordersCount / limit),
   }
-}
+  
+} //getAllOrders()
+
+
+
+
 export async function getOrderById(orderId: string): Promise<IOrder> {
+  
   await connectToDatabase()
   const order = await Order.findById(orderId)
   return JSON.parse(JSON.stringify(order))
-}
+  
+} //getOrderById()
+
+
 
 export async function createPayPalOrder(orderId: string) {
+  
   await connectToDatabase()
   try {
     const order = await Order.findById(orderId)
@@ -237,7 +277,11 @@ export async function createPayPalOrder(orderId: string) {
   } catch (err) {
     return { success: false, message: formatError(err) }
   }
-}
+  
+} //createPayPalOrder()
+
+
+
 
 export async function approvePayPalOrder(
   orderId: string,
@@ -321,7 +365,11 @@ export const calcDeliveryDateAndPrice = async ({
     taxPrice,
     totalPrice,
   }
-}
+  
+} //approvePayPalOrder()
+
+
+
 
 // GET ORDERS BY USER
 export async function getOrderSummary(date: DateRange) {
@@ -417,9 +465,14 @@ export async function getOrderSummary(date: DateRange) {
     topSalesProducts: JSON.parse(JSON.stringify(topSalesProducts)),
     latestOrders: JSON.parse(JSON.stringify(latestOrders)) as IOrderList[],
   }
-}
+  
+} //getOrderSummary()
+
+
+
 
 async function getSalesChartData(date: DateRange) {
+  
   const result = await Order.aggregate([
     {
       $match: {
@@ -458,9 +511,13 @@ async function getSalesChartData(date: DateRange) {
   ])
 
   return result
-}
+  
+} //getSalesChartData()
+
+
 
 async function getTopSalesProducts(date: DateRange) {
+  
   const result = await Order.aggregate([
     {
       $match: {
@@ -509,7 +566,11 @@ async function getTopSalesProducts(date: DateRange) {
   ])
 
   return result
-}
+  
+} //getTopSalesProducts()
+
+
+
 
 async function getTopSalesCategories(date: DateRange, limit = 5) {
   const result = await Order.aggregate([
@@ -537,4 +598,5 @@ async function getTopSalesCategories(date: DateRange, limit = 5) {
   ])
 
   return result
-}
+  
+} //getTopSalesCategories()
