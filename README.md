@@ -44,7 +44,7 @@ https://next-mongo-ecommerce-final.vercel.app/
 
 2. Create Env File
 
-   - duplicate .example-env and rename it to .env.local
+   - copy dot-env to .env
 
 3. Setup MongoDB
 
