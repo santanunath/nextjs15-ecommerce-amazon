@@ -24,7 +24,7 @@ https://next-mongo-ecommerce-final.vercel.app/
 
 ## What you will learn
 
-- creating e-commerce website pages by next.js server components
+- creating e-commerce website 'pages' by next.js 'server' components
 - designing header, footer, sidebar, menu and search box by shadcn and tailwind
 - quick view products in modals using nextjs parallel routes with intercepting routes
 - create database schema 'models' by 'Mongoose' and MongoDB database
